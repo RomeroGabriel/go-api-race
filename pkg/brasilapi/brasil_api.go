@@ -3,6 +3,7 @@ package brasilapi
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -20,6 +21,10 @@ type BrasilApiResult struct {
 	Neighborhood string `json:"neighborhood"`
 	Street       string `json:"street"`
 	Service      string `json:"service"`
+}
+
+func (r BrasilApiResult) ToString() string {
+	return fmt.Sprintf("Cep: %s, State: %s", r.Cep, r.State)
 }
 
 func NewBrasilApi() *BrasilApi {

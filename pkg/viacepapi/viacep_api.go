@@ -3,6 +3,7 @@ package viacepapi
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -24,6 +25,10 @@ type ViaCepResult struct {
 	Gia         string `json:"gia"`
 	Ddd         string `json:"ddd"`
 	Siafi       string `json:"siafi"`
+}
+
+func (r ViaCepResult) ToString() string {
+	return fmt.Sprintf("Cep: %s, Logradouro: %s", r.Cep, r.Logradouro)
 }
 
 func NewViaCepApi() *ViaCepApi {
